@@ -1,0 +1,4 @@
+from wsl/bash, run this to get into postgres container
+docker exec -it miso-db-1 sh
+inside docker, run this to connect to postgres
+psql --user postgres --password app
