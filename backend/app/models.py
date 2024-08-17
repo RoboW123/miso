@@ -97,6 +97,12 @@ class ItemsPublic(SQLModel):
 class Message(SQLModel):
     message: str
 
+class TimerInput(SQLModel):
+    user: uuid.UUID
+    limitInSeconds: int
+
+class TimerOutput(SQLModel):
+    limitInSeconds: int
 
 # JSON payload containing access token
 class Token(SQLModel):
