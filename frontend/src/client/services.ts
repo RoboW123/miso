@@ -1,3 +1,4 @@
+import { TimerInput } from "../hooks/useTimer"
 import type { CancelablePromise } from "./core/CancelablePromise"
 import { OpenAPI } from "./core/OpenAPI"
 import { request as __request } from "./core/request"
@@ -31,6 +32,29 @@ export type TDataResetPassword = {
 }
 export type TDataRecoverPasswordHtmlContent = {
   email: string
+}
+
+export class TimerService {
+  /**
+   * Login Access Token
+   * OAuth2 compatible token login, get an access token for future requests
+   * @returns Token Successful Response
+   * @throws ApiError
+   */
+  public static createTimer(
+      data: TimerInput,
+  ): CancelablePromise<Token> {
+    const formData = {...data};
+    return __request(OpenAPI, {
+      method: "POST",
+      url: "/api/v1/timers",
+      formData: formData,
+      mediaType: "application/x-www-form-urlencoded",
+      errors: {
+        422: "Validation Error",
+      },
+    })
+  }
 }
 
 export class LoginService {
