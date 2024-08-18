@@ -49,6 +49,11 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const TimerRoute = TimerImport.update({
+  path: '/timer',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const LayoutRoute = LayoutImport.update({
   id: '/_layout',
   getParentRoute: () => rootRoute,
@@ -84,6 +89,10 @@ declare module '@tanstack/react-router' {
     }
     '/login': {
       preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/timer': {
+      preLoaderRoute: typeof TimerImport
       parentRoute: typeof rootRoute
     }
     '/page': {
